@@ -30,7 +30,7 @@ router.get('/book/:id', (req, res, next) => {
     })
 });
 
-router.get('/books/add', (req, res, next) => {
+router.get('/book-add', (req, res, next) => {
   res.render("book-add");
 });
 
@@ -57,8 +57,8 @@ router.get('/books/edit', (req, res, next) => {
 });
 
 router.post('/books/edit', (req, res, next) => {
-  const { title, author, description, rating } = req.body;
-  Book.update({_id: req.query.book_id}, { $set: {title, author, description, rating }}, { new: true })
+  const { book_id, title, author, description, rating } = req.body;
+  Book.update({_id: book_id}, { $set: {title, author, description, rating }}, { new: true })
   .then((book) => {
     res.redirect('/books');
   })
