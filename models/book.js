@@ -1,13 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-var ObjectID = require('mongodb').ObjectID;
+var ObjectId = Schema.ObjectId;
 
 const bookSchema = new Schema(
   {
     title: String,
     description: String,
-    author: [ { type : ObjectID, ref: 'Author' } ],
-    rating: Number
+    author: [{ type: ObjectId, ref: "Author" }],
+    rating: Number,
+    reviews: [
+      {
+        user: String,
+        comments: String
+      }
+    ]
   },
   {
     timestamps: {
